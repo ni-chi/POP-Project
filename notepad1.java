@@ -35,10 +35,11 @@ interface note{
         super("The Notepad");
 
         //  Initializes the text area for user input
-        txtArea = new JTextArea(24, 54);
+        txtArea = new JTextArea(45, 54);
 
         //  Sets formatting to break line at whole words, and adding
         //  some border to the JTextArea.
+        
         txtArea.setLineWrap(true);
         txtArea.setWrapStyleWord(true);
         txtArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -69,7 +70,7 @@ interface note{
 
         //  Declaring the menu bar
         menuBar = new JMenuBar();
-
+		//menuBar.add(Box.createRigidArea(new Dimension(100,25)));
         //  Assigns names to the main menu and adding them to
         //  actionListener's and the menu bar
         String[] menuNames = {"File", "Edit", "Format", "Help"};
