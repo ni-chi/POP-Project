@@ -128,12 +128,7 @@ interface note{
         fontMenu.setMnemonic(KeyEvent.VK_F);    //  Font
     }
 
-    /**
-     * This method prompts user to enter name of file that will be attempted
-     * to be opened
-     *
-     * @exception FileNotFoundException On input error.
-     */
+
     public void openFile() {
 
         //  Prompts user for the name of the file to read
@@ -164,12 +159,7 @@ interface note{
         }
     }
 
-    /**
-     * This method  prompts user to enter name of file that will be attempted
-     * to be stored
-     *
-     * @exception IOException On output error.
-     */
+ 
     public void saveFile() {
 
         //  Prompts user for the name of the file to be stored
@@ -191,20 +181,10 @@ interface note{
         }
     }
 
-    /**
-     *  This method prompts user with three options
-     *      - Save text area to file through method saveFile()
-     *      - Exit the program without storing file
-     *      - Go back to superclass JFrame
-     *
-     * @param clear handles what to do after a user has selected an option.
-     *              If clear is true, do not exit program after statement.
-     *              If clear is false, exit program after statement.
-     */
-    public void exitFile(boolean clear) {
+      public void exitFile(boolean clear) {
 
         //  Prompts user with options to store file, not to store file or
-        int options = JOptionPane.showConfirmDialog(txtArea, "Are you sure you want to exit?");
+        int options = JOptionPane.showConfirmDialog(txtArea, "Do you want to save the changes?");
 
         //  If user acted on the YES option
         if (options == JOptionPane.YES_OPTION) {
@@ -236,8 +216,12 @@ interface note{
 
     public void clearFile(boolean clear) {
 
+    	int options = JOptionPane.showConfirmDialog(txtArea, "Do you want to save the file?");
 
-
+        //  If user acted on the YES option
+        if (options == JOptionPane.YES_OPTION) {
+            saveFile();
+        }
             // And first acted on the 'Clear' menuItem
         if (clear) {
             txtArea.setText("");
