@@ -17,12 +17,12 @@ interface note{
 }
 
  abstract class notepad2 extends JFrame implements ActionListener,note{
-         private         JMenuBar      menuBar;
+     private         JMenuBar      menuBar;
     private         JTextArea     txtArea;
     private final   JMenu[]       menu = new JMenu[4];
     private final   JMenuItem[]   menuItem = new JMenuItem[7];
     private         JMenu         fontMenu;
-    private final   JMenuItem[]   fontItem = new JMenuItem[10];
+    private final   JMenuItem[]   fontItem = new JMenuItem[20];
     //  Declaring all swing components for access throughout multiple methods
    
     /**
@@ -125,6 +125,7 @@ interface note{
         menu[2].setMnemonic(KeyEvent.VK_O);     //  Format
         menu[3].setMnemonic(KeyEvent.VK_H);     //  Help
 
+        
         menuItem[0].setMnemonic(KeyEvent.VK_O); //  Open
         menuItem[1].setMnemonic(KeyEvent.VK_S); //  Save
         menuItem[2].setMnemonic(KeyEvent.VK_E); //  Exit
@@ -242,6 +243,22 @@ interface note{
         }
     }
 
+    public void clearFile(boolean clear) {
+
+
+
+            // And first acted on the 'Clear' menuItem
+        if (clear) {
+            txtArea.setText("");
+
+        // And first acted on the 'Exit' menuItem
+        } else {
+            System.exit(0);
+        }
+    }
+        
+
+
     /**
      * This method handles user actions on the menu's
      *
@@ -301,7 +318,7 @@ interface note{
         //  Clear:
         //  If there is content in JTextArea, prompt user to save content
         if (source == menuItem[5] && !txtArea.getText().equals("")) {
-                exitFile(true);
+                clearFile(true);
         }
 
         //  About:
