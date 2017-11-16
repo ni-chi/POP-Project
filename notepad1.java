@@ -147,7 +147,7 @@ interface note{
 
         //  Prompts user for the name of the file to read
         String fileOutput = "";
-        String fileName = JOptionPane.showInputDialog(txtArea, "Enter location here!");
+        String fileName = JOptionPane.showInputDialog(txtArea, "Enter file name here!");
 
         //  If the user has typed anything, attempt to open file
         if (fileName != null) {
@@ -182,7 +182,7 @@ interface note{
     public void saveFile() {
 
         //  Prompts user for the name of the file to be stored
-        String fileName = JOptionPane.showInputDialog(txtArea, "Enter location here!");
+        String fileName = JOptionPane.showInputDialog(txtArea, "Enter file name here!");
 
         //  If user has typed in anything, attempt to save file
         if (fileName != null) {
