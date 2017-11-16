@@ -4,10 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
- * This class extends JFrame to inherit all methods for active use.
- * This class implements the interface ActionListener to handle user actions
- */
+
 interface note{
     void initializeMenus();
     void saveFile();
@@ -16,6 +13,11 @@ interface note{
     void exitFile(boolean clear) ;
 }
 
+/**
+ * This class extends JFrame to inherit all methods for active use.
+ * This class implements the interface ActionListener to handle user actions
+ */
+
  abstract class notepad2 extends JFrame implements ActionListener,note{
      private         JMenuBar      menuBar;
     private         JTextArea     txtArea;
@@ -23,7 +25,6 @@ interface note{
     private final   JMenuItem[]   menuItem = new JMenuItem[7];
     private         JMenu         fontMenu;
     private final   JMenuItem[]   fontItem = new JMenuItem[20];
-    //  Declaring all swing components for access throughout multiple methods
    
     /**
      * This constructor initializes all components, sets the workspace
@@ -31,14 +32,10 @@ interface note{
      */
     public notepad2() {
 
-        //  Assigns a title to the notepad
         super("The Notepad");
 
-        //  Initializes the text area for user input
         txtArea = new JTextArea(45, 54);
 
-        //  Sets formatting to break line at whole words, and adding
-        //  some border to the JTextArea.
         
         txtArea.setLineWrap(true);
         txtArea.setWrapStyleWord(true);
@@ -68,11 +65,8 @@ interface note{
      */
     public void initializeMenus() {
 
-        //  Declaring the menu bar
         menuBar = new JMenuBar();
-		//menuBar.add(Box.createRigidArea(new Dimension(100,25)));
-        //  Assigns names to the main menu and adding them to
-        //  actionListener's and the menu bar
+		
         String[] menuNames = {"File", "Edit", "Format", "Help"};
 
         for (int i = 0; i < menu.length; i++) {
@@ -110,11 +104,7 @@ interface note{
         menu[1].add(fontMenu);
     }
 
-    /**
-     * This method assigns a mnemonic character for each menu and menuItem.
-     * If the program is viewed on a Mac, alt(option) key must be pressed
-     * to view the mnemonic icon.
-     */
+
     public void initializeKeyBindings() {
 
         //  The assignment had mnemonic icons on different indexes in its
@@ -183,7 +173,7 @@ interface note{
     public void saveFile() {
 
         //  Prompts user for the name of the file to be stored
-        String fileName = JOptionPane.showInputDialog(txtArea, "Enter file name here!");
+        String fileName = JOptionPane.showInputDialog(txtArea, "Enter file name to be saved as here!");
 
         //  If user has typed in anything, attempt to save file
         if (fileName != null) {
@@ -260,31 +250,22 @@ interface note{
         
 
 
-    /**
-     * This method handles user actions on the menu's
-     *
-     * @param e handles actionListeners
-     */
-    @Override
+    
     public void actionPerformed(ActionEvent e) {
 
-        //  Stores a variable with the source of the action event for
-        //  readable event handling
+ 
         Object source = e.getSource();
 
         //  Names of menuItems that the user can act on is a comment to its
         //  preceding code
-        //  Open:
         if (source == menuItem[0]) {
             openFile();
         }
 
-        //  Save:
         if (source == menuItem[1]) {
             saveFile();
         }
 
-        //  Exit:
         if (source == menuItem[2]) {
 
             //  Exit's the file directly if JTextArea is empty
@@ -296,19 +277,16 @@ interface note{
             }
         }
 
-        //  Text Wrap:
         if (source == menuItem[3]) {
             txtArea.setLineWrap(true);
             txtArea.setWrapStyleWord(true);
         }
 
-        //  No Text Wrap:
         if (source == menuItem[4]) {
             txtArea.setLineWrap(false);
             txtArea.setWrapStyleWord(false);
         }
 
-        //  Font:
         //  Assigns new font size to match the users size preference entered
         for (int i = 0; i < fontItem.length; i++) {
             if (source == fontItem[i]) {
@@ -317,7 +295,6 @@ interface note{
         }
 
         //  Clear:
-        //  If there is content in JTextArea, prompt user to save content
         if (source == menuItem[5] && !txtArea.getText().equals("")) {
                 clearFile(true);
         }
@@ -328,10 +305,7 @@ interface note{
         }
     }
 
-    /**
-     * This method is main, it declares and initializes a new Object of
-     * the class notepad
-     */
+    
    
    }
 
